@@ -59,11 +59,10 @@ def main():
         if sched_time >= now:
             print(f"Scheduling call at {t[:2]}:{t[2:]}")
             schedule.every().day.at(f"{t[:2]}:{t[2:]}").do(lambda url=url, arduino=arduino: scheduled_request(url, arduino))
-
         else:
             print(f"Skipping past time {t[:2]}:{t[2:]}")
 
-    # If no future calls remain, so we exit
+    # If no future calls remain, we exit.
     if not schedule.jobs:
         print("\nNo remaining times to schedule today. Exiting.\n")
         return
